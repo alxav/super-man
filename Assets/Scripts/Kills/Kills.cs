@@ -26,12 +26,6 @@ public class Kills : MonoBehaviour
             text.text = info + value;
     }
 
-    // todo временно, для тестов. Убрать
-    public void TestKill()
-    {
-        kills.Value += 1;
-    }
-
     private void OnDestroy()
     {
         kills.Value = 0;
