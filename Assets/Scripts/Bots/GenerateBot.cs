@@ -9,12 +9,12 @@ public class GenerateBot : MonoBehaviour
     [SerializeField] private float z;
 
     private Transform _transform;
-    private HelperBot helperBot;
+    private Helper helper;
 
     private void Awake()
     {
         _transform = transform;
-        helperBot = new HelperBot();
+        helper = new Helper();
         Bot.KillBadBot += AddBadBot;
     }
 
@@ -33,7 +33,7 @@ public class GenerateBot : MonoBehaviour
     private void CreateBot(BotData data)
     {
         var clone = Instantiate(data.Prefab, _transform);
-        clone.transform.position = helperBot.GeneratePoint(x, z);
+        clone.transform.position = helper.GeneratePoint(x, z);
 
         clone.GetComponent<Bot>().Constructor(data.Type,data.Speed, x, z);
 

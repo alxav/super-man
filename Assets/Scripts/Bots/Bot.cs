@@ -12,7 +12,7 @@ public class Bot : MonoBehaviour
     
     private NavMeshAgent navMeshAgent;
     private Animator animator;
-    private HelperBot helperBot;
+    private Helper helper;
     private EnumBot type;
     private bool isKill;
 
@@ -25,7 +25,7 @@ public class Bot : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        helperBot = new HelperBot();
+        helper = new Helper();
     }
 
     public void Constructor(EnumBot type, float speed, float x, float y)
@@ -34,7 +34,7 @@ public class Bot : MonoBehaviour
         this.x = x;
         this.y = y;
         navMeshAgent.speed = speed;
-        navMeshAgent.SetDestination(helperBot.GeneratePoint(x, y));
+        navMeshAgent.SetDestination(helper.GeneratePoint(x, y));
     }
 
     public void Kill()
@@ -67,7 +67,7 @@ public class Bot : MonoBehaviour
         
         if (navMeshAgent && navMeshAgent.remainingDistance <= 0.1f)
         {
-            navMeshAgent.SetDestination(helperBot.GeneratePoint(x, y));
+            navMeshAgent.SetDestination(helper.GeneratePoint(x, y));
         }
     }
     
